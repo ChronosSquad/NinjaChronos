@@ -1,0 +1,627 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D21F11320A63D36001284FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D21F11220A63D36001284FB /* AppDelegate.m */; };
+		8D21F11620A63D36001284FB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D21F11520A63D36001284FB /* ViewController.m */; };
+		8D21F11920A63D36001284FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D21F11720A63D36001284FB /* Main.storyboard */; };
+		8D21F11B20A63D3B001284FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D21F11A20A63D3B001284FB /* Assets.xcassets */; };
+		8D21F11E20A63D3B001284FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D21F11C20A63D3B001284FB /* LaunchScreen.storyboard */; };
+		8D21F12120A63D3B001284FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D21F12020A63D3B001284FB /* main.m */; };
+		8D21F12520A63D3B001284FB /* chronos-installer WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8D21F12420A63D3B001284FB /* chronos-installer WatchKit App.app */; };
+		8D21F12B20A63D3B001284FB /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D21F12920A63D3B001284FB /* Interface.storyboard */; };
+		8D21F12D20A63D3C001284FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D21F12C20A63D3C001284FB /* Assets.xcassets */; };
+		8D21F13420A63D3C001284FB /* chronos-installer WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8D21F13320A63D3C001284FB /* chronos-installer WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8D21F13A20A63D3C001284FB /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D21F13920A63D3C001284FB /* InterfaceController.m */; };
+		8D21F13D20A63D3C001284FB /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D21F13C20A63D3C001284FB /* ExtensionDelegate.m */; };
+		8D21F14020A63D3C001284FB /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D21F13F20A63D3C001284FB /* NotificationController.m */; };
+		8D21F14220A63D3E001284FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D21F14120A63D3E001284FB /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8D21F12620A63D3B001284FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D21F10620A63D36001284FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D21F12320A63D3B001284FB;
+			remoteInfo = "chronos-installer WatchKit App";
+		};
+		8D21F13520A63D3C001284FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D21F10620A63D36001284FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D21F13220A63D3C001284FB;
+			remoteInfo = "chronos-installer WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8D21F14A20A63D3E001284FB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8D21F13420A63D3C001284FB /* chronos-installer WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D21F14E20A63D3E001284FB /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				8D21F12520A63D3B001284FB /* chronos-installer WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8D21F10E20A63D36001284FB /* chronos-installer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chronos-installer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D21F11120A63D36001284FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8D21F11220A63D36001284FB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8D21F11420A63D36001284FB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8D21F11520A63D36001284FB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8D21F11820A63D36001284FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8D21F11A20A63D3B001284FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8D21F11D20A63D3B001284FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8D21F11F20A63D3B001284FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D21F12020A63D3B001284FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8D21F12420A63D3B001284FB /* chronos-installer WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chronos-installer WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D21F12A20A63D3B001284FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		8D21F12C20A63D3C001284FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8D21F12E20A63D3C001284FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D21F13320A63D3C001284FB /* chronos-installer WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "chronos-installer WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D21F13820A63D3C001284FB /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		8D21F13920A63D3C001284FB /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		8D21F13B20A63D3C001284FB /* ExtensionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionDelegate.h; sourceTree = "<group>"; };
+		8D21F13C20A63D3C001284FB /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
+		8D21F13E20A63D3C001284FB /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
+		8D21F13F20A63D3C001284FB /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
+		8D21F14120A63D3E001284FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8D21F14320A63D3E001284FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D21F14420A63D3E001284FB /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D21F10B20A63D36001284FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D21F13020A63D3C001284FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8D21F10520A63D36001284FB = {
+			isa = PBXGroup;
+			children = (
+				8D21F11020A63D36001284FB /* chronos-installer */,
+				8D21F12820A63D3B001284FB /* chronos-installer WatchKit App */,
+				8D21F13720A63D3C001284FB /* chronos-installer WatchKit Extension */,
+				8D21F10F20A63D36001284FB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8D21F10F20A63D36001284FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D21F10E20A63D36001284FB /* chronos-installer.app */,
+				8D21F12420A63D3B001284FB /* chronos-installer WatchKit App.app */,
+				8D21F13320A63D3C001284FB /* chronos-installer WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8D21F11020A63D36001284FB /* chronos-installer */ = {
+			isa = PBXGroup;
+			children = (
+				8D21F11120A63D36001284FB /* AppDelegate.h */,
+				8D21F11220A63D36001284FB /* AppDelegate.m */,
+				8D21F11420A63D36001284FB /* ViewController.h */,
+				8D21F11520A63D36001284FB /* ViewController.m */,
+				8D21F11720A63D36001284FB /* Main.storyboard */,
+				8D21F11A20A63D3B001284FB /* Assets.xcassets */,
+				8D21F11C20A63D3B001284FB /* LaunchScreen.storyboard */,
+				8D21F11F20A63D3B001284FB /* Info.plist */,
+				8D21F12020A63D3B001284FB /* main.m */,
+			);
+			path = "chronos-installer";
+			sourceTree = "<group>";
+		};
+		8D21F12820A63D3B001284FB /* chronos-installer WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				8D21F12920A63D3B001284FB /* Interface.storyboard */,
+				8D21F12C20A63D3C001284FB /* Assets.xcassets */,
+				8D21F12E20A63D3C001284FB /* Info.plist */,
+			);
+			path = "chronos-installer WatchKit App";
+			sourceTree = "<group>";
+		};
+		8D21F13720A63D3C001284FB /* chronos-installer WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8D21F13820A63D3C001284FB /* InterfaceController.h */,
+				8D21F13920A63D3C001284FB /* InterfaceController.m */,
+				8D21F13B20A63D3C001284FB /* ExtensionDelegate.h */,
+				8D21F13C20A63D3C001284FB /* ExtensionDelegate.m */,
+				8D21F13E20A63D3C001284FB /* NotificationController.h */,
+				8D21F13F20A63D3C001284FB /* NotificationController.m */,
+				8D21F14120A63D3E001284FB /* Assets.xcassets */,
+				8D21F14320A63D3E001284FB /* Info.plist */,
+				8D21F14420A63D3E001284FB /* PushNotificationPayload.apns */,
+			);
+			path = "chronos-installer WatchKit Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D21F10D20A63D36001284FB /* chronos-installer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D21F14F20A63D3E001284FB /* Build configuration list for PBXNativeTarget "chronos-installer" */;
+			buildPhases = (
+				8D21F10A20A63D36001284FB /* Sources */,
+				8D21F10B20A63D36001284FB /* Frameworks */,
+				8D21F10C20A63D36001284FB /* Resources */,
+				8D21F14E20A63D3E001284FB /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8D21F12720A63D3B001284FB /* PBXTargetDependency */,
+			);
+			name = "chronos-installer";
+			productName = "chronos-installer";
+			productReference = 8D21F10E20A63D36001284FB /* chronos-installer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8D21F12320A63D3B001284FB /* chronos-installer WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D21F14B20A63D3E001284FB /* Build configuration list for PBXNativeTarget "chronos-installer WatchKit App" */;
+			buildPhases = (
+				8D21F12220A63D3B001284FB /* Resources */,
+				8D21F14A20A63D3E001284FB /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8D21F13620A63D3C001284FB /* PBXTargetDependency */,
+			);
+			name = "chronos-installer WatchKit App";
+			productName = "chronos-installer WatchKit App";
+			productReference = 8D21F12420A63D3B001284FB /* chronos-installer WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		8D21F13220A63D3C001284FB /* chronos-installer WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D21F14720A63D3E001284FB /* Build configuration list for PBXNativeTarget "chronos-installer WatchKit Extension" */;
+			buildPhases = (
+				8D21F12F20A63D3C001284FB /* Sources */,
+				8D21F13020A63D3C001284FB /* Frameworks */,
+				8D21F13120A63D3C001284FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "chronos-installer WatchKit Extension";
+			productName = "chronos-installer WatchKit Extension";
+			productReference = 8D21F13320A63D3C001284FB /* chronos-installer WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8D21F10620A63D36001284FB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Sam Gardner";
+				TargetAttributes = {
+					8D21F10D20A63D36001284FB = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					8D21F12320A63D3B001284FB = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					8D21F13220A63D3C001284FB = {
+						CreatedOnToolsVersion = 9.3;
+					};
+				};
+			};
+			buildConfigurationList = 8D21F10920A63D36001284FB /* Build configuration list for PBXProject "chronos-installer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8D21F10520A63D36001284FB;
+			productRefGroup = 8D21F10F20A63D36001284FB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D21F10D20A63D36001284FB /* chronos-installer */,
+				8D21F12320A63D3B001284FB /* chronos-installer WatchKit App */,
+				8D21F13220A63D3C001284FB /* chronos-installer WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D21F10C20A63D36001284FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D21F11E20A63D3B001284FB /* LaunchScreen.storyboard in Resources */,
+				8D21F11B20A63D3B001284FB /* Assets.xcassets in Resources */,
+				8D21F11920A63D36001284FB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D21F12220A63D3B001284FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D21F12D20A63D3C001284FB /* Assets.xcassets in Resources */,
+				8D21F12B20A63D3B001284FB /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D21F13120A63D3C001284FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D21F14220A63D3E001284FB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D21F10A20A63D36001284FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D21F11620A63D36001284FB /* ViewController.m in Sources */,
+				8D21F12120A63D3B001284FB /* main.m in Sources */,
+				8D21F11320A63D36001284FB /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D21F12F20A63D3C001284FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D21F13D20A63D3C001284FB /* ExtensionDelegate.m in Sources */,
+				8D21F13A20A63D3C001284FB /* InterfaceController.m in Sources */,
+				8D21F14020A63D3C001284FB /* NotificationController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8D21F12720A63D3B001284FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D21F12320A63D3B001284FB /* chronos-installer WatchKit App */;
+			targetProxy = 8D21F12620A63D3B001284FB /* PBXContainerItemProxy */;
+		};
+		8D21F13620A63D3C001284FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D21F13220A63D3C001284FB /* chronos-installer WatchKit Extension */;
+			targetProxy = 8D21F13520A63D3C001284FB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8D21F11720A63D36001284FB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D21F11820A63D36001284FB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8D21F11C20A63D3B001284FB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D21F11D20A63D3B001284FB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8D21F12920A63D3B001284FB /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D21F12A20A63D3B001284FB /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8D21F14520A63D3E001284FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8D21F14620A63D3E001284FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8D21F14820A63D3E001284FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 62PB6NV7YN;
+				INFOPLIST_FILE = "chronos-installer WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.samgisaninja.chronos-installer.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		8D21F14920A63D3E001284FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 62PB6NV7YN;
+				INFOPLIST_FILE = "chronos-installer WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.samgisaninja.chronos-installer.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+		8D21F14C20A63D3E001284FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 62PB6NV7YN;
+				IBSC_MODULE = chronos_installer_WatchKit_Extension;
+				INFOPLIST_FILE = "chronos-installer WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.samgisaninja.chronos-installer.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		8D21F14D20A63D3E001284FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 62PB6NV7YN;
+				IBSC_MODULE = chronos_installer_WatchKit_Extension;
+				INFOPLIST_FILE = "chronos-installer WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.samgisaninja.chronos-installer.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+		8D21F15020A63D3E001284FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 62PB6NV7YN;
+				INFOPLIST_FILE = "chronos-installer/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.samgisaninja.chronos-installer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8D21F15120A63D3E001284FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 62PB6NV7YN;
+				INFOPLIST_FILE = "chronos-installer/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.samgisaninja.chronos-installer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8D21F10920A63D36001284FB /* Build configuration list for PBXProject "chronos-installer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D21F14520A63D3E001284FB /* Debug */,
+				8D21F14620A63D3E001284FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8D21F14720A63D3E001284FB /* Build configuration list for PBXNativeTarget "chronos-installer WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D21F14820A63D3E001284FB /* Debug */,
+				8D21F14920A63D3E001284FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8D21F14B20A63D3E001284FB /* Build configuration list for PBXNativeTarget "chronos-installer WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D21F14C20A63D3E001284FB /* Debug */,
+				8D21F14D20A63D3E001284FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8D21F14F20A63D3E001284FB /* Build configuration list for PBXNativeTarget "chronos-installer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D21F15020A63D3E001284FB /* Debug */,
+				8D21F15120A63D3E001284FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8D21F10620A63D36001284FB /* Project object */;
+}
