@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D041EE620BA0F7600C96E1B /* SourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D041EE520BA0F7600C96E1B /* SourcesViewController.m */; };
 		8D21F11320A63D36001284FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D21F11220A63D36001284FB /* AppDelegate.m */; };
-		8D21F11620A63D36001284FB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D21F11520A63D36001284FB /* ViewController.m */; };
+		8D21F11620A63D36001284FB /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D21F11520A63D36001284FB /* HomePageViewController.m */; };
 		8D21F11920A63D36001284FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D21F11720A63D36001284FB /* Main.storyboard */; };
 		8D21F11B20A63D3B001284FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D21F11A20A63D3B001284FB /* Assets.xcassets */; };
 		8D21F11E20A63D3B001284FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D21F11C20A63D3B001284FB /* LaunchScreen.storyboard */; };
@@ -66,11 +67,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8D041EE420BA0F7500C96E1B /* SourcesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourcesViewController.h; sourceTree = "<group>"; };
+		8D041EE520BA0F7600C96E1B /* SourcesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourcesViewController.m; sourceTree = "<group>"; };
 		8D21F10E20A63D36001284FB /* chronos-installer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chronos-installer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D21F11120A63D36001284FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8D21F11220A63D36001284FB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8D21F11420A63D36001284FB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8D21F11520A63D36001284FB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8D21F11420A63D36001284FB /* HomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
+		8D21F11520A63D36001284FB /* HomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		8D21F11820A63D36001284FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D21F11A20A63D3B001284FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D21F11D20A63D3B001284FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -135,13 +138,15 @@
 			children = (
 				8D21F11120A63D36001284FB /* AppDelegate.h */,
 				8D21F11220A63D36001284FB /* AppDelegate.m */,
-				8D21F11420A63D36001284FB /* ViewController.h */,
-				8D21F11520A63D36001284FB /* ViewController.m */,
+				8D21F11420A63D36001284FB /* HomePageViewController.h */,
+				8D21F11520A63D36001284FB /* HomePageViewController.m */,
 				8D21F11720A63D36001284FB /* Main.storyboard */,
 				8D21F11A20A63D3B001284FB /* Assets.xcassets */,
 				8D21F11C20A63D3B001284FB /* LaunchScreen.storyboard */,
 				8D21F11F20A63D3B001284FB /* Info.plist */,
 				8D21F12020A63D3B001284FB /* main.m */,
+				8D041EE420BA0F7500C96E1B /* SourcesViewController.h */,
+				8D041EE520BA0F7600C96E1B /* SourcesViewController.m */,
 			);
 			path = "chronos-installer";
 			sourceTree = "<group>";
@@ -303,7 +308,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D21F11620A63D36001284FB /* ViewController.m in Sources */,
+				8D21F11620A63D36001284FB /* HomePageViewController.m in Sources */,
+				8D041EE620BA0F7600C96E1B /* SourcesViewController.m in Sources */,
 				8D21F12120A63D3B001284FB /* main.m in Sources */,
 				8D21F11320A63D36001284FB /* AppDelegate.m in Sources */,
 			);
