@@ -20,10 +20,7 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 - (IBAction)infoButton:(id)sender {
     UIAlertController *teamInfo = [UIAlertController alertControllerWithTitle:@"Chronos Installer" message:@"Created by EthanR, FoxletFox, Lepidus, PsychoTea, and Samg_is_a_Ninja" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil];
