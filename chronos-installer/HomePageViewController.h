@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface HomePageViewController : UIViewController
-
+@property (strong, nonatomic) IBOutlet UIButton *refreshProgressLabel;
+@property (strong, nonatomic) IBOutlet UIProgressView *refreshProgressBar;
+@property int sourceBeingUpdated;
+@property (strong, nonatomic) NSArray *sourceList;
 
 @end
 

@@ -32,7 +32,7 @@
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         [newSourcesFile addAction:okAction];
         [self presentViewController:newSourcesFile animated:YES completion:nil];
-        _sources = [[NSMutableArray alloc] initWithObjects:@"https://apt.thebigboss.org/repofiles/cydia/", @"http://apt.saurik.com/", @"https://repo.midnight.team/", nil];
+        _sources = [[NSMutableArray alloc] initWithObjects:@"https://raw.githubusercontent.com/Samgisaninja/sample-chronos-repo/master/packages.plist", nil];
         BOOL success = [_sources writeToFile:_sourcesplistFilePath atomically:YES];
         NSAssert(success, @"writeToFile failed");
     }
@@ -99,14 +99,13 @@
 }
 
 -(void)addNewRepo{
-    UIAlertController *getRepoAddress = [UIAlertController alertControllerWithTitle:@"Enter APT repo address" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *getRepoAddress = [UIAlertController alertControllerWithTitle:@"Enter URL of packages.plist file" message:nil preferredStyle:UIAlertControllerStyleAlert];
     [getRepoAddress addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.text = @"https://";
         textField.keyboardType = UIKeyboardTypeURL;
     }];
     UIAlertAction *addRepoAction = [UIAlertAction actionWithTitle:@"Add" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         [self->_sources insertObject:getRepoAddress.textFields.firstObject.text atIndex:0];
-        NSLog(@"%@", self->_sources);
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.sourcesTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         self->_changesMade = TRUE;
