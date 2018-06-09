@@ -31,6 +31,15 @@ extern char **environ;
         [_refreshProgressLabel setHidden:TRUE];
         [_refreshProgressLabel setEnabled:FALSE];
     }
+    NSDictionary *testDict = @{
+                           @"Author" : @"Sam Gardner",
+                           @"BundleID" : @"com.samgisaninja.betterglyphs",
+                           @"Download Link" : @"https://downloadlink.com",
+                           @"Name" : @"Succession",
+                           @"Version" : @"0.0.4"
+                           };
+    NSArray *testArray = [[NSArray alloc] initWithObjects:testDict, nil];
+    [testArray writeToFile:[documentsDirectory stringByAppendingPathComponent:@"test.plist"] atomically:TRUE];
 }
 
 
@@ -41,6 +50,12 @@ extern char **environ;
     [self presentViewController:teamInfo animated:YES completion:nil];
 }
 - (IBAction)refreshSourcesButton:(id)sender {
+    [self refreshSources];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [self.navigationController setNavigationBarHidden:FALSE animated:TRUE];
+}
+-(void)refreshSources{
     [_refreshProgressLabel setEnabled:FALSE];
     [_refreshProgressLabel setTintColor:[UIColor darkGrayColor]];
     [_refreshProgressLabel setTitle:@"Reading sources" forState:UIControlStateNormal];
@@ -51,9 +66,6 @@ extern char **environ;
     _sourceBeingUpdated = 0;
     [self downloadPackagesFile];
 }
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [self.navigationController setNavigationBarHidden:FALSE animated:TRUE];
-}
 - (void) URLSession:(NSURLSession *)session downloadTask:(nonnull NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     float totalSize = (totalBytesExpectedToWrite/1024)/1024.f;
     float writtenSize = (totalBytesWritten/1024)/1024.f;
@@ -61,7 +73,6 @@ extern char **environ;
     self.refreshProgressBar.progress = downloadProgress;
 }
 -(void)downloadPackagesFile{
-    NSLog(@"Updating: %d",_sourceBeingUpdated);
     [_refreshProgressLabel setTitle:[NSString stringWithFormat:@"Downloading package info from %@", [_sourceList objectAtIndex:_sourceBeingUpdated]] forState:UIControlStateNormal];
     NSURL *sourceURL = [NSURL URLWithString:[_sourceList objectAtIndex:_sourceBeingUpdated]];
     NSURLSessionDownloadTask *task = [[NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]] downloadTaskWithURL:sourceURL];

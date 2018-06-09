@@ -13,6 +13,5 @@
 @property (strong, nonatomic) IBOutlet UIProgressView *refreshProgressBar;
 @property int sourceBeingUpdated;
 @property (strong, nonatomic) NSArray *sourceList;
-
 @end
 

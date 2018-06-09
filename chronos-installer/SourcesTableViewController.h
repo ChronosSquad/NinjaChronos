@@ -3,7 +3,7 @@
 //  chronos-installer
 //
 //  Created by Sam Gardner on 5/26/18.
-//  Copyright © 2018 Sam Gardner. All rights reserved.
+//  Copyright © 2018 Chronos Development. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -14,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *sourcesTableView;
 @property BOOL changesMade;
 @property (strong, nonatomic) NSString *sourcesplistFilePath;
+@property (copy, nonatomic) NSString *selectedSource;
 
 @end

@@ -3,10 +3,12 @@
 //  chronos-installer
 //
 //  Created by Sam Gardner on 5/26/18.
-//  Copyright © 2018 Sam Gardner. All rights reserved.
+//  Copyright © 2018 Chronos Development. All rights reserved.
 //
 
 #import "SourcesTableViewController.h"
+#import "HomePageViewController.h"
+#import "SourceViewController.h"
 
 @interface SourcesTableViewController (){
     UIAlertController *confirmAddNewRepoAlert;
@@ -15,6 +17,7 @@
 @end
 
 @implementation SourcesTableViewController
+@synthesize selectedSource;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,15 +36,18 @@
         [newSourcesFile addAction:okAction];
         [self presentViewController:newSourcesFile animated:YES completion:nil];
         _sources = [[NSMutableArray alloc] initWithObjects:@"https://raw.githubusercontent.com/Samgisaninja/sample-chronos-repo/master/packages.plist", nil];
-        BOOL success = [_sources writeToFile:_sourcesplistFilePath atomically:YES];
+        BOOL success = [_sources writeToFile:_sourcesplistFilePath atomically:TRUE];
         NSAssert(success, @"writeToFile failed");
     }
     _changesMade = FALSE;
-    
-
 }
+
 -(void)viewWillDisappear:(BOOL)animated{
-    [self.navigationController setNavigationBarHidden:TRUE animated:FALSE];
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound)
+    {
+        [self.navigationController setNavigationBarHidden:TRUE animated:FALSE];
+        [self.navigationController popViewControllerAnimated:NO];
+    }
     if (_changesMade == TRUE) {
         BOOL success = [_sources writeToFile:_sourcesplistFilePath atomically:YES];
         NSAssert(success, @"writeToFile failed");
@@ -59,10 +65,14 @@
     return 1;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    selectedSource = [_sources objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"goToSourcesViewController" sender:self];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _sources.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *reuseIdentifier = @"reuseIdentifier";
@@ -75,6 +85,7 @@
     cell.textLabel.text = repoAddressLabel;
     return cell;
 }
+
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated{
     [super setEditing:editing animated:animated];
     [_sourcesTableView setEditing:editing animated:animated];
@@ -87,8 +98,6 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
-
-
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -121,6 +130,12 @@
     self.navigationItem.leftBarButtonItem = nil;
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"goToSourcesViewController"]){
+        SourceViewController *destViewController = [segue destinationViewController];
+        destViewController.selectedSource = selectedSource;
+    }
+}
 
 /*
 // Override to support rearranging the table view.
