@@ -31,15 +31,6 @@ extern char **environ;
         [_refreshProgressLabel setHidden:TRUE];
         [_refreshProgressLabel setEnabled:FALSE];
     }
-    NSDictionary *testDict = @{
-                           @"Author" : @"Sam Gardner",
-                           @"BundleID" : @"com.samgisaninja.betterglyphs",
-                           @"Download Link" : @"https://downloadlink.com",
-                           @"Name" : @"Succession",
-                           @"Version" : @"0.0.4"
-                           };
-    NSArray *testArray = [[NSArray alloc] initWithObjects:testDict, nil];
-    [testArray writeToFile:[documentsDirectory stringByAppendingPathComponent:@"test.plist"] atomically:TRUE];
 }
 
 
