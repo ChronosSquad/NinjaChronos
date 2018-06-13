@@ -56,7 +56,11 @@
         NSLog(@"%@", _packageDescLink);
         NSURLSessionDataTask *getPackageDescription = [[NSURLSession sharedSession] dataTaskWithURL:_packageDescLink
             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                if (error == nil) {
                 self->_packageDescription = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                } else {
+                    self->_packageDescription = [error localizedDescription];
+                }
                 self.packageDescLabel.text = self->_packageDescription;
             }];
         [getPackageDescription resume];
