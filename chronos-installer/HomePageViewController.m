@@ -24,11 +24,16 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *sourcesplistFilePath = [documentsDirectory stringByAppendingPathComponent:@"sources.plist"];
     if ([[NSFileManager defaultManager] fileExistsAtPath:sourcesplistFilePath]) {
-        [self refreshSources];
     } else {
-        [_refreshProgressLabel setHidden:TRUE];
-        [_refreshProgressLabel setEnabled:FALSE];
+        UIAlertController *newSourcesFile = [UIAlertController alertControllerWithTitle:@"File sources.plist not found" message:@"A new one has been created" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [newSourcesFile addAction:okAction];
+        [self presentViewController:newSourcesFile animated:YES completion:nil];
+        NSArray *sources = [[NSArray alloc] initWithObjects:@"https://raw.githubusercontent.com/Samgisaninja/sample-chronos-repo/master/packages.plist", nil];
+        BOOL success = [sources writeToFile:sourcesplistFilePath atomically:TRUE];
+        NSAssert(success, @"writeToFile failed");
     }
+    [self refreshSources];
 }
 
 
