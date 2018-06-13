@@ -22,6 +22,7 @@
 		8D21F14020A63D3C001284FB /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D21F13F20A63D3C001284FB /* NotificationController.m */; };
 		8D21F14220A63D3E001284FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D21F14120A63D3E001284FB /* Assets.xcassets */; };
 		8D7563D620BA6A7000ACE768 /* SourcesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7563D520BA6A7000ACE768 /* SourcesTableViewController.m */; };
+		8D76AB2D20D03EFA00940BE0 /* PackageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D76AB2C20D03EFA00940BE0 /* PackageViewController.m */; };
 		8D919C0220C783A700E024A2 /* SourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D919C0120C783A700E024A2 /* SourceViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,8 @@
 		8D21F14420A63D3E001284FB /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		8D7563D420BA6A7000ACE768 /* SourcesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourcesTableViewController.h; sourceTree = "<group>"; };
 		8D7563D520BA6A7000ACE768 /* SourcesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourcesTableViewController.m; sourceTree = "<group>"; };
+		8D76AB2B20D03EFA00940BE0 /* PackageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackageViewController.h; sourceTree = "<group>"; };
+		8D76AB2C20D03EFA00940BE0 /* PackageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackageViewController.m; sourceTree = "<group>"; };
 		8D919C0020C783A700E024A2 /* SourceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceViewController.h; sourceTree = "<group>"; };
 		8D919C0120C783A700E024A2 /* SourceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,6 +152,8 @@
 				8D21F11F20A63D3B001284FB /* Info.plist */,
 				8D919C0020C783A700E024A2 /* SourceViewController.h */,
 				8D919C0120C783A700E024A2 /* SourceViewController.m */,
+				8D76AB2B20D03EFA00940BE0 /* PackageViewController.h */,
+				8D76AB2C20D03EFA00940BE0 /* PackageViewController.m */,
 				8D21F12020A63D3B001284FB /* main.m */,
 				8D7563D420BA6A7000ACE768 /* SourcesTableViewController.h */,
 				8D7563D520BA6A7000ACE768 /* SourcesTableViewController.m */,
@@ -314,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D21F11620A63D36001284FB /* HomePageViewController.m in Sources */,
+				8D76AB2D20D03EFA00940BE0 /* PackageViewController.m in Sources */,
 				8D919C0220C783A700E024A2 /* SourceViewController.m in Sources */,
 				8D21F12120A63D3B001284FB /* main.m in Sources */,
 				8D7563D620BA6A7000ACE768 /* SourcesTableViewController.m in Sources */,

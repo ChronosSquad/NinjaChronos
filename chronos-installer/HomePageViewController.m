@@ -7,9 +7,6 @@
 //
 
 #import "HomePageViewController.h"
-#import <spawn.h>
-#include <sys/sysctl.h>
-extern char **environ;
 
 @interface HomePageViewController ()
 
@@ -27,6 +24,7 @@ extern char **environ;
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *sourcesplistFilePath = [documentsDirectory stringByAppendingPathComponent:@"sources.plist"];
     if ([[NSFileManager defaultManager] fileExistsAtPath:sourcesplistFilePath]) {
+        [self refreshSources];
     } else {
         [_refreshProgressLabel setHidden:TRUE];
         [_refreshProgressLabel setEnabled:FALSE];
@@ -35,7 +33,7 @@ extern char **environ;
 
 
 - (IBAction)infoButton:(id)sender {
-    UIAlertController *teamInfo = [UIAlertController alertControllerWithTitle:@"Chronos Installer" message:@"Created by EthanR, FoxletFox, Lepidus, PsychoTea, and Samg_is_a_Ninja" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *teamInfo = [UIAlertController alertControllerWithTitle:@"Chronos Installer" message:@"Created by Samg_is_a_Ninja \n \n Special thanks to PsychoTea for creating overcl0ck, the first watchOS jailbreak" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil];
     [teamInfo addAction:okAction];
     [self presentViewController:teamInfo animated:YES completion:nil];
@@ -87,6 +85,11 @@ extern char **environ;
         _sourceBeingUpdated = _sourceBeingUpdated + 1;
         [self downloadPackagesFile];
     }
+}
 
+- (void) session:(nonnull WCSession *)session didReceiveApplicationContext:(nonnull NSDictionary<NSString *,id> *)applicationContext {
+    NSLog(@"%@", applicationContext);
+    _pairedWatchVersion = [applicationContext objectForKey:@"watchOSVersion"];
+    NSLog(@"%@ Received by iOS", _pairedWatchVersion);
 }
 @end
