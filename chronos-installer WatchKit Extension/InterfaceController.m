@@ -18,7 +18,16 @@
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
-
+    if ([WCSession isSupported]) {
+        WCSession *session = [WCSession defaultSession];
+        session.delegate = self;
+        [session activateSession];
+        NSDictionary *transfer = @{@"Version" : [[WKInterfaceDevice currentDevice] systemVersion]};
+        NSError *error;
+        [[WCSession defaultSession] updateApplicationContext:transfer error:&error];
+        NSLog(@"%@ Sent by watchOS", transfer);
+    }
+    
     // Configure interface objects here.
 }
 
