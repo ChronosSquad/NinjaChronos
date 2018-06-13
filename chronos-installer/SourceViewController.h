@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SourceViewController : UITableViewController
 @property (strong, nonatomic) NSString *selectedSource;
 @property (strong, nonatomic) NSArray *packages;
+@property (strong, nonatomic) NSDictionary *selectedPackage;
 
 @end
 

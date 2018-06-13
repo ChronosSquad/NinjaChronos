@@ -23,7 +23,7 @@
     NSString *sourceplistFilePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-packages.plist", [selectedSource stringByReplacingOccurrencesOfString:@"/" withString:@""]]];
     _packages = [NSMutableArray arrayWithContentsOfFile:sourceplistFilePath];
     if (_packages == NULL) {
-        UIAlertController *invalidRepoAlert = [UIAlertController alertControllerWithTitle:@"Invalid repo" message:@"Unable to find packages in this repo, make sure you provide a link to a valid packages file" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *invalidRepoAlert = [UIAlertController alertControllerWithTitle:@"Invalid repo" message:@"Unable to find packages in this repository. \n \n Try refreshing your sources from the home screen, and make sure you provide a link to a valid packages file" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *deleteRepo = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:nil];
         [invalidRepoAlert addAction:deleteRepo];
         [self presentViewController:invalidRepoAlert animated:TRUE completion:nil];
@@ -59,58 +59,17 @@
     return cell;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    _selectedPackage = [_packages objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"goToPackageViewController" sender:self];
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"goToPackageViewController"]){
+        SourceViewController *destViewController = [segue destinationViewController];
+        destViewController.selectedPackage = _selectedPackage;
+        destViewController.selectedSource = selectedSource;
+    }
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
