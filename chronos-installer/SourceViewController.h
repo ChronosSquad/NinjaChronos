@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *selectedSource;
 @property (strong, nonatomic) NSArray *packages;
 @property (strong, nonatomic) NSDictionary *selectedPackage;
+@property (strong, nonatomic) NSString *selectedSourceName;
 
 @end
 

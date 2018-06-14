@@ -18,6 +18,7 @@
 
 @implementation SourcesTableViewController
 @synthesize selectedSource;
+@synthesize selectedSourceName;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,13 +26,13 @@
     [self.navigationItem setTitle:@"Sources"];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    _sourcesplistFilePath = [documentsDirectory stringByAppendingPathComponent:@"sources.plist"];
+    _documentsDirectory = [paths objectAtIndex:0];
+    _sourcesplistFilePath = [_documentsDirectory stringByAppendingPathComponent:@"sources.plist"];
     if ([[NSFileManager defaultManager] fileExistsAtPath:_sourcesplistFilePath]) {
         _sources = [NSMutableArray arrayWithContentsOfFile:_sourcesplistFilePath];
         NSAssert(_sources, @"arrayWithContentsOfFile failed");
     } else {
-        UIAlertController *newSourcesFile = [UIAlertController alertControllerWithTitle:@"File sources.plist not found" message:@"A new one has been created" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *newSourcesFile = [UIAlertController alertControllerWithTitle:@"File sources.plist not found" message:@"A new one has been created, please return to the home screen and refresh sources." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         [newSourcesFile addAction:okAction];
         [self presentViewController:newSourcesFile animated:YES completion:nil];
@@ -67,6 +68,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     selectedSource = [_sources objectAtIndex:indexPath.row];
+    NSDictionary *sourceInformation = [[NSArray arrayWithContentsOfFile:_sourcePackagesFilePath] objectAtIndex:0];
+     selectedSourceName = [sourceInformation objectForKey:@"RepoName"];
     [self performSegueWithIdentifier:@"goToSourcesViewController" sender:self];
 }
 
@@ -81,8 +84,18 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     }
     // Configure the cell...
+    [[cell textLabel] setNumberOfLines:0];
+    [[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
     NSString * repoAddressLabel = [NSString stringWithFormat:@"%@", _sources[indexPath.row]];
-    cell.textLabel.text = repoAddressLabel;
+    _sourcePackagesFilePath = [_documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-packages.plist", [[_sources objectAtIndex:indexPath.row] stringByReplacingOccurrencesOfString:@"/" withString:@""]]];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:_sourcePackagesFilePath]) {
+        NSDictionary *sourceInformation = [[NSArray arrayWithContentsOfFile:_sourcePackagesFilePath] objectAtIndex:0];
+        NSString *repoName = [sourceInformation objectForKey:@"RepoName"];
+        NSString *cellText = [repoName stringByAppendingString:[NSString stringWithFormat:@"\n %@", repoAddressLabel]];
+        cell.textLabel.text = cellText;
+    } else {
+        cell.textLabel.text = repoAddressLabel;
+    }
     return cell;
 }
 
@@ -134,6 +147,7 @@
     if ([[segue identifier] isEqualToString:@"goToSourcesViewController"]){
         SourceViewController *destViewController = [segue destinationViewController];
         destViewController.selectedSource = selectedSource;
+        destViewController.selectedSourceName = selectedSourceName;
     }
 }
 

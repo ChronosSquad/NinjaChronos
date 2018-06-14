@@ -16,10 +16,20 @@
 @implementation PackageViewController
 @synthesize selectedSource;
 @synthesize selectedPackage;
+@synthesize selectedSourceName;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _packageBundleID = [selectedPackage objectForKey:@"BundleID"];
+    UIAlertController *invalidPackage = [UIAlertController alertControllerWithTitle:@"Invalid Package" message:@"Repo does not have the required information for this package" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^ (UIAlertAction * action){
+        [self performSegueWithIdentifier:@"goToSourceViewController" sender:self];
+    }];
+    [invalidPackage addAction:cancelButton];
+    if ([selectedPackage objectForKey:@"BundleID"] != nil) {
+        _packageBundleID = [selectedPackage objectForKey:@"BundleID"];
+    } else {
+        [self presentViewController:invalidPackage animated:TRUE completion:nil];
+    }
     [[self packageBundleIDLabel] setText:_packageBundleID];
     if ([selectedPackage objectForKey:@"Name"] != nil) {
         _packageName = [selectedPackage objectForKey:@"Name"];
@@ -38,9 +48,12 @@
     }
     if ([selectedPackage objectForKey:@"Author"] != nil) {
         _packageAuthor = [selectedPackage objectForKey:@"Author"];
+        NSLog(@"%@", _packageAuthor);
         [[self packageAuthorLabel] setText:_packageAuthor];
+        [[self packageRepoLabel] setText:selectedSourceName];
     } else {
-        //Hide repo name and set author label to name of repo
+        [[self packageAuthorLabel] setText:selectedSourceName];
+        [[self packageRepoLabel] setHidden:TRUE];
     }
     if ([selectedPackage objectForKey:@"Dependencies"] != nil) {
         _packageDependencies = [selectedPackage objectForKey:@"Dependencies"];
@@ -66,6 +79,9 @@
     } else {
         [[self packageDescLabel] setText:@"Chronos couldn't find a description for this package."];
     }
+    
+}
+- (IBAction)downloadButton:(id)sender {
     
 }
 

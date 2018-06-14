@@ -15,5 +15,8 @@
 @property BOOL changesMade;
 @property (strong, nonatomic) NSString *sourcesplistFilePath;
 @property (copy, nonatomic) NSString *selectedSource;
+@property (strong, nonatomic) NSString *documentsDirectory;
+@property (strong, nonatomic) NSString *sourcePackagesFilePath;
+@property (strong, nonatomic) NSString *selectedSourceName;
 
 @end

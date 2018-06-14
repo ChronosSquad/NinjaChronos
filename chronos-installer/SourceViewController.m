@@ -15,6 +15,7 @@
 
 @implementation SourceViewController
 @synthesize selectedSource;
+@synthesize selectedSourceName;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,6 +66,7 @@
         SourceViewController *destViewController = [segue destinationViewController];
         destViewController.selectedPackage = _selectedPackage;
         destViewController.selectedSource = selectedSource;
+        destViewController.selectedSourceName = selectedSourceName;
     }
 }
 
