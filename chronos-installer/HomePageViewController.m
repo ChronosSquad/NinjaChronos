@@ -78,6 +78,9 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *sourcePackagesFilePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-packages.plist", [[_sourceList objectAtIndex:_sourceBeingUpdated] stringByReplacingOccurrencesOfString:@"/" withString:@""]]];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:sourcePackagesFilePath]) {
+        [[NSFileManager defaultManager] removeItemAtPath:sourcePackagesFilePath error:nil];
+    }
     [[NSFileManager defaultManager] moveItemAtPath:[location path] toPath:sourcePackagesFilePath error:nil];
     if (_sourceBeingUpdated == ([_sourceList count] - 1) ) {
         [_refreshProgressLabel setTitle:@"Refresh Sources" forState:UIControlStateNormal];
