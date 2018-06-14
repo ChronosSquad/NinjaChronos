@@ -21,18 +21,14 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *sourceplistFilePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-packages.plist", [selectedSource stringByReplacingOccurrencesOfString:@"/" withString:@""]]];
-    _packages = [NSMutableArray arrayWithContentsOfFile:sourceplistFilePath];
+    NSArray *packagesFileContents = [NSMutableArray arrayWithContentsOfFile:sourceplistFilePath];
+    _packages = [packagesFileContents objectAtIndex:1];
     if (_packages == NULL) {
         UIAlertController *invalidRepoAlert = [UIAlertController alertControllerWithTitle:@"Invalid repo" message:@"Unable to find packages in this repository. \n \n Try refreshing your sources from the home screen, and make sure you provide a link to a valid packages file" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *deleteRepo = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:nil];
         [invalidRepoAlert addAction:deleteRepo];
         [self presentViewController:invalidRepoAlert animated:TRUE completion:nil];
     }
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 #pragma mark - Table view data source

@@ -53,7 +53,6 @@
     _packageWatchOSCompatibility = [selectedPackage objectForKey:@"compatible-watchos"];
     if ([selectedPackage objectForKey:@"Description"]) {
         _packageDescLink = [NSURL URLWithString:[selectedPackage objectForKey:@"Description"]];
-        NSLog(@"%@", _packageDescLink);
         NSURLSessionDataTask *getPackageDescription = [[NSURLSession sharedSession] dataTaskWithURL:_packageDescLink
             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                 if (error == nil) {
