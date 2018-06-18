@@ -11,5 +11,6 @@
 #import <WatchConnectivity/WatchConnectivity.h>
 
 @interface InterfaceController : WKInterfaceController
+@property (strong, nonatomic) WCSession *session;
 
 @end

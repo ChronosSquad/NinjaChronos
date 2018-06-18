@@ -19,16 +19,17 @@
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     if ([WCSession isSupported]) {
-        WCSession *session = [WCSession defaultSession];
-        session.delegate = self;
-        [session activateSession];
-        NSDictionary *transfer = @{@"Version" : [[WKInterfaceDevice currentDevice] systemVersion]};
-        NSError *error;
-        [[WCSession defaultSession] updateApplicationContext:transfer error:&error];
-        NSLog(@"%@ Sent by watchOS", transfer);
+        self.session = [WCSession defaultSession];
+        self.session.delegate = self;
+        [self.session activateSession];
     }
-    
-    // Configure interface objects here.
+    NSString *watchOSVersion = [[WKInterfaceDevice currentDevice] systemVersion];
+    NSArray *installedPackages = [[NSArray alloc] init];
+    NSDictionary *watchInformation = @{
+                                       @"Version" : watchOSVersion,
+                                       @"Installed Packages" : installedPackages
+                                       };
+    [self.session updateApplicationContext:watchInformation error:nil];
 }
 
 - (void)willActivate {

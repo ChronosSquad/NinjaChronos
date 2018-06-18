@@ -20,6 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
     UIAlertController *invalidPackage = [UIAlertController alertControllerWithTitle:@"Invalid Package" message:@"Repo does not have the required information for this package" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^ (UIAlertAction * action){
         [self performSegueWithIdentifier:@"goToSourceViewController" sender:self];
@@ -73,13 +75,29 @@
                 } else {
                     self->_packageDescription = [error localizedDescription];
                 }
-                self.packageDescLabel.text = self->_packageDescription;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.packageDescLabel.text = self->_packageDescription;
+                });
             }];
         [getPackageDescription resume];
     } else {
         [[self packageDescLabel] setText:@"Chronos couldn't find a description for this package."];
     }
-    
+    NSDictionary *watchInfo = [NSDictionary dictionaryWithContentsOfFile:[documentsDirectory stringByAppendingPathComponent:@"watchInfo.plist"]];
+    NSString *pairedWatchVersion = [watchInfo objectForKey:@"Version"];
+    NSLog(@"pairedWatchVersion: %@", pairedWatchVersion);
+    if (pairedWatchVersion == NULL) {
+        [[self watchOSCompatibilityLabel] setText:@"Please open the Chronos app on your apple watch to check compatibility."];
+    } else {
+        BOOL isCompatible = [_packageWatchOSCompatibility containsObject:pairedWatchVersion];
+        if (isCompatible == TRUE) {
+        [[self watchOSCompatibilityLabel] setText:[NSString stringWithFormat:@"Compatible with your watchOS version (%@)", pairedWatchVersion]];
+        } else {
+            [[self watchOSCompatibilityLabel] setText:@"Not compatible with your watchOS version"];
+            [[self watchOSCompatibilityLabel] setTextColor:[UIColor redColor]];
+            [[self downloadButtonOutlet] setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        }
+    }
 }
 - (IBAction)downloadButton:(id)sender {
     

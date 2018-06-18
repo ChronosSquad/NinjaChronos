@@ -55,7 +55,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Manage package sources" image="sourcesButton"/>
                                 <connections>
-                                    <segue destination="q8X-0v-ves" kind="show" id="wWY-1G-d4w"/>
+                                    <segue destination="q8X-0v-ves" kind="show" identifier="goToSourcesTableViewController" id="wWY-1G-d4w"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3JZ-Nx-Ezr">
@@ -210,11 +210,19 @@
                                     <action selector="downloadButton:" destination="kcu-03-OxB" eventType="touchUpInside" id="gHa-kI-jzH"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please open the Chronos app on your apple watch to check compatibility." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQS-GR-NbK">
+                                <rect key="frame" x="16" y="582" width="341" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="kcC-db-dYg"/>
                     </view>
                     <connections>
+                        <outlet property="downloadButtonOutlet" destination="hcw-Uk-Y2K" id="Cbl-5f-LkJ"/>
                         <outlet property="packageAuthorLabel" destination="cuJ-Xt-7KZ" id="qcu-Et-Mc1"/>
                         <outlet property="packageBundleIDLabel" destination="F3N-gz-qpO" id="n2K-SP-PjX"/>
                         <outlet property="packageDependsLabel" destination="tEm-NB-heh" id="0Ip-KY-Ywz"/>
@@ -222,6 +230,7 @@
                         <outlet property="packageIconView" destination="aga-NE-Rge" id="3bm-0V-Vd4"/>
                         <outlet property="packageNameLabel" destination="9Hb-n6-txc" id="irN-aq-Glk"/>
                         <outlet property="packageRepoLabel" destination="yEP-ZS-peF" id="oAa-ZC-BBV"/>
+                        <outlet property="watchOSCompatibilityLabel" destination="FQS-GR-NbK" id="dUx-o1-lGY"/>
                         <segue destination="gaM-BN-0Mt" kind="show" identifier="goToSourceViewController" id="MQh-pf-K07"/>
                     </connections>
                 </viewController>

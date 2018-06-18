@@ -20,7 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *packageDescLabel;
 @property (strong, nonatomic) IBOutlet UILabel *packageDependsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *packageBundleIDLabel;
+@property (strong, nonatomic) IBOutlet UILabel *watchOSCompatibilityLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *packageIconView;
+@property (strong, nonatomic) IBOutlet UIButton *downloadButtonOutlet;
 @property (strong, nonatomic) NSString *packageName;
 @property (strong, nonatomic) NSString *packageAuthor;
 @property (strong, nonatomic) NSString *selectedSourceName;
@@ -33,7 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSArray *packageWatchOSCompatibility;
 @property (strong, nonatomic) NSString *packageDescription;
 @property (strong, nonatomic) UIImage *packageIconImage;
-
 @end
 
 NS_ASSUME_NONNULL_END

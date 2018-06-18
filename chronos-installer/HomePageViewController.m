@@ -7,6 +7,7 @@
 //
 
 #import "HomePageViewController.h"
+#import "SourcesTableViewController.h"
 
 @interface HomePageViewController ()
 
@@ -20,6 +21,11 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.refreshProgressBar.progress = 0;
     [_refreshProgressBar setHidden:TRUE];
+    if ([WCSession isSupported]) {
+        WCSession *session = [WCSession defaultSession];
+        session.delegate = self;
+        [session activateSession];
+    }
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *sourcesplistFilePath = [documentsDirectory stringByAppendingPathComponent:@"sources.plist"];
@@ -96,8 +102,9 @@
 }
 
 - (void) session:(nonnull WCSession *)session didReceiveApplicationContext:(nonnull NSDictionary<NSString *,id> *)applicationContext {
-    NSLog(@"%@", applicationContext);
-    _pairedWatchVersion = [applicationContext objectForKey:@"watchOSVersion"];
-    NSLog(@"%@ Received by iOS", _pairedWatchVersion);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    [[NSFileManager defaultManager] removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:@"watchInfo.plist"] error:nil];
+    [applicationContext writeToFile:[documentsDirectory stringByAppendingPathComponent:@"watchInfo.plist"] atomically:TRUE];
 }
 @end
