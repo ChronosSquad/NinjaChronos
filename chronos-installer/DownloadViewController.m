@@ -20,6 +20,7 @@
     [super viewDidLoad];
     NSURLSessionDownloadTask *downloadPackage = [[NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]] downloadTaskWithURL:downloadLink];
     [downloadPackage resume];
+    [[self navigationController] setNavigationBarHidden:TRUE animated:TRUE];
     
 }
 
@@ -37,7 +38,21 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:debsDirectory withIntermediateDirectories:FALSE attributes:nil error:nil];
     }
     NSError *error;
-    [[NSFileManager defaultManager] moveItemAtPath:[location path] toPath:[debsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.deb", bundleID]] error:&error];
+    NSString *pathToDownload = [debsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.deb", bundleID]];
+    [[NSFileManager defaultManager] moveItemAtPath:[location path] toPath:pathToDownload error:&error];
+    [[self progressLabel] setText:@"Download complete!"];
+    UIAlertController *finishedDownloadingAlert = [UIAlertController alertControllerWithTitle:@"Finished downloading package" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *goToHomePageViewControllerAction = [UIAlertAction actionWithTitle:@"Back to home page" style:UIAlertActionStyleCancel handler:^ (UIAlertAction * _Nonnull action) {
+        [self performSegueWithIdentifier:@"goToHomePageViewController" sender:self];
+    }];
+    UIAlertAction *goToDownloadsViewControllerAction = [UIAlertAction actionWithTitle:@"Manage downloads" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *deleteDownloadAction = [UIAlertAction actionWithTitle:@"Delete this package" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action){
+        [[NSFileManager defaultManager] removeItemAtPath:pathToDownload error:nil];
+    }];
+    [finishedDownloadingAlert addAction:goToHomePageViewControllerAction];
+    [finishedDownloadingAlert addAction:goToDownloadsViewControllerAction];
+    [finishedDownloadingAlert addAction:deleteDownloadAction];
+    [self presentViewController:finishedDownloadingAlert animated:TRUE completion:nil];
 }
 /*
 #pragma mark - Navigation
