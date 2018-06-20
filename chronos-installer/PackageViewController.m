@@ -8,6 +8,7 @@
 
 #import "PackageViewController.h"
 #import "SourceViewController.h"
+#import "DownloadViewController.h"
 
 @interface PackageViewController ()
 
@@ -20,6 +21,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([WCSession isSupported]) {
+        WCSession *session = [WCSession defaultSession];
+        session.delegate = self;
+        [session activateSession];
+    }
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     UIAlertController *invalidPackage = [UIAlertController alertControllerWithTitle:@"Invalid Package" message:@"Repo does not have the required information for this package" preferredStyle:UIAlertControllerStyleAlert];
@@ -50,7 +56,6 @@
     }
     if ([selectedPackage objectForKey:@"Author"] != nil) {
         _packageAuthor = [selectedPackage objectForKey:@"Author"];
-        NSLog(@"%@", _packageAuthor);
         [[self packageAuthorLabel] setText:_packageAuthor];
         [[self packageRepoLabel] setText:selectedSourceName];
     } else {
@@ -81,11 +86,10 @@
             }];
         [getPackageDescription resume];
     } else {
-        [[self packageDescLabel] setText:@"Chronos couldn't find a description for this package."];
+        [[self packageDescLabel] setText:@"Chronos Installer couldn't find a description for this package."];
     }
     NSDictionary *watchInfo = [NSDictionary dictionaryWithContentsOfFile:[documentsDirectory stringByAppendingPathComponent:@"watchInfo.plist"]];
     NSString *pairedWatchVersion = [watchInfo objectForKey:@"Version"];
-    NSLog(@"pairedWatchVersion: %@", pairedWatchVersion);
     if (pairedWatchVersion == NULL) {
         [[self watchOSCompatibilityLabel] setText:@"Please open the Chronos app on your apple watch to check compatibility."];
     } else {
@@ -100,8 +104,36 @@
     }
 }
 - (IBAction)downloadButton:(id)sender {
-    
+    [self performSegueWithIdentifier:@"goToDownloadViewController" sender:self];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"goToDownloadViewController"]) {
+        DownloadViewController *destViewController = [segue destinationViewController];
+        destViewController.downloadLink = _packageDownloadLink;
+        destViewController.bundleID = _packageBundleID;
+    }
+}
+
+- (void) session:(nonnull WCSession *)session didReceiveApplicationContext:(nonnull NSDictionary<NSString *,id> *)applicationContext {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    [[NSFileManager defaultManager] removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:@"watchInfo.plist"] error:nil];
+    [applicationContext writeToFile:[documentsDirectory stringByAppendingPathComponent:@"watchInfo.plist"] atomically:TRUE];
+    NSDictionary *watchInfo = [NSDictionary dictionaryWithContentsOfFile:[documentsDirectory stringByAppendingPathComponent:@"watchInfo.plist"]];
+    NSString *pairedWatchVersion = [watchInfo objectForKey:@"Version"];
+    if (pairedWatchVersion == NULL) {
+        [[self watchOSCompatibilityLabel] setText:@"Please open the Chronos app on your apple watch to check compatibility."];
+    } else {
+        BOOL isCompatible = [_packageWatchOSCompatibility containsObject:pairedWatchVersion];
+        if (isCompatible == TRUE) {
+            [[self watchOSCompatibilityLabel] setText:[NSString stringWithFormat:@"Compatible with your watchOS version (%@)", pairedWatchVersion]];
+        } else {
+            [[self watchOSCompatibilityLabel] setText:@"Not compatible with your watchOS version"];
+            [[self watchOSCompatibilityLabel] setTextColor:[UIColor redColor]];
+            [[self downloadButtonOutlet] setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        }
+    }
+}
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <WatchKit/WatchKit.h>
+#import <WatchConnectivity/WatchConnectivity.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -24,6 +24,7 @@
 		8D7563D620BA6A7000ACE768 /* SourcesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7563D520BA6A7000ACE768 /* SourcesTableViewController.m */; };
 		8D76AB2D20D03EFA00940BE0 /* PackageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D76AB2C20D03EFA00940BE0 /* PackageViewController.m */; };
 		8D919C0220C783A700E024A2 /* SourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D919C0120C783A700E024A2 /* SourceViewController.m */; };
+		8DECFD8D20D818A300E89A49 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DECFD8C20D818A300E89A49 /* DownloadViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		8D76AB2C20D03EFA00940BE0 /* PackageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackageViewController.m; sourceTree = "<group>"; };
 		8D919C0020C783A700E024A2 /* SourceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceViewController.h; sourceTree = "<group>"; };
 		8D919C0120C783A700E024A2 /* SourceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceViewController.m; sourceTree = "<group>"; };
+		8DECFD8B20D818A300E89A49 /* DownloadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
+		8DECFD8C20D818A300E89A49 /* DownloadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +157,8 @@
 				8D919C0120C783A700E024A2 /* SourceViewController.m */,
 				8D76AB2B20D03EFA00940BE0 /* PackageViewController.h */,
 				8D76AB2C20D03EFA00940BE0 /* PackageViewController.m */,
+				8DECFD8B20D818A300E89A49 /* DownloadViewController.h */,
+				8DECFD8C20D818A300E89A49 /* DownloadViewController.m */,
 				8D21F12020A63D3B001284FB /* main.m */,
 				8D7563D420BA6A7000ACE768 /* SourcesTableViewController.h */,
 				8D7563D520BA6A7000ACE768 /* SourcesTableViewController.m */,
@@ -319,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D21F11620A63D36001284FB /* HomePageViewController.m in Sources */,
+				8DECFD8D20D818A300E89A49 /* DownloadViewController.m in Sources */,
 				8D76AB2D20D03EFA00940BE0 /* PackageViewController.m in Sources */,
 				8D919C0220C783A700E024A2 /* SourceViewController.m in Sources */,
 				8D21F12120A63D3B001284FB /* main.m in Sources */,

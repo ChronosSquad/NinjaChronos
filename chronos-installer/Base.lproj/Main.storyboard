@@ -232,11 +232,51 @@
                         <outlet property="packageRepoLabel" destination="yEP-ZS-peF" id="oAa-ZC-BBV"/>
                         <outlet property="watchOSCompatibilityLabel" destination="FQS-GR-NbK" id="dUx-o1-lGY"/>
                         <segue destination="gaM-BN-0Mt" kind="show" identifier="goToSourceViewController" id="MQh-pf-K07"/>
+                        <segue destination="qgN-sS-kx1" kind="show" identifier="goToDownloadViewController" id="AKd-VT-vxn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wc1-n1-xnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4112.8000000000002" y="-102.09895052473765"/>
+        </scene>
+        <!--Download View Controller-->
+        <scene sceneID="9Jv-Xb-neG">
+            <objects>
+                <viewController id="qgN-sS-kx1" customClass="DownloadViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s4t-8P-zVG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Downloading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulX-cV-jer">
+                                <rect key="frame" x="109" y="20" width="156" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Downloading... 0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0u-hg-biE">
+                                <rect key="frame" x="87" y="342" width="200" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9x6-ZZ-zCH">
+                                <rect key="frame" x="87" y="332" width="200" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="lZ5-IT-JQA"/>
+                    </view>
+                    <connections>
+                        <outlet property="progressBar" destination="9x6-ZZ-zCH" id="HHS-OB-QAb"/>
+                        <outlet property="progressLabel" destination="s0u-hg-biE" id="HhT-Nd-0Ht"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mk5-2Q-9kw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4968.8000000000002" y="-102.09895052473765"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4ee-KM-up0">
