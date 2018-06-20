@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSArray *packageWatchOSCompatibility;
 @property (strong, nonatomic) NSString *packageDescription;
 @property (strong, nonatomic) UIImage *packageIconImage;
+@property (nonatomic) BOOL isCompatible;
 @end
 
 NS_ASSUME_NONNULL_END

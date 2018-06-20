@@ -104,7 +104,18 @@
     }
 }
 - (IBAction)downloadButton:(id)sender {
-    [self performSegueWithIdentifier:@"goToDownloadViewController" sender:self];
+    if (_isCompatible == TRUE) {
+        [self performSegueWithIdentifier:@"goToDownloadViewController" sender:self];
+    } else {
+        UIAlertController *notCompatibleWarning = [UIAlertController alertControllerWithTitle:@"This package may not be compatible with your watchOS version" message:@"The developer of this package has not marked this package as compatible with your watchOS version. Installing this package may lead to system instability or may render your device inoperable." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelDownloadAction = [UIAlertAction actionWithTitle:@"Cancel download" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *downloadIncompatiblePackageAction = [UIAlertAction actionWithTitle:@"Download anyways" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [self performSegueWithIdentifier:@"goToDownloadViewController" sender:self];
+        }];
+        [notCompatibleWarning addAction:cancelDownloadAction];
+        [notCompatibleWarning addAction:downloadIncompatiblePackageAction];
+        [self presentViewController:notCompatibleWarning animated:TRUE completion:nil];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -125,8 +136,8 @@
     if (pairedWatchVersion == NULL) {
         [[self watchOSCompatibilityLabel] setText:@"Please open the Chronos app on your apple watch to check compatibility."];
     } else {
-        BOOL isCompatible = [_packageWatchOSCompatibility containsObject:pairedWatchVersion];
-        if (isCompatible == TRUE) {
+        _isCompatible = [_packageWatchOSCompatibility containsObject:pairedWatchVersion];
+        if (_isCompatible == TRUE) {
             [[self watchOSCompatibilityLabel] setText:[NSString stringWithFormat:@"Compatible with your watchOS version (%@)", pairedWatchVersion]];
         } else {
             [[self watchOSCompatibilityLabel] setText:@"Not compatible with your watchOS version"];
