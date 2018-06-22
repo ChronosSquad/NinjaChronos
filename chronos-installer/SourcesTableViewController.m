@@ -44,11 +44,6 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound)
-    {
-        [self.navigationController setNavigationBarHidden:TRUE animated:FALSE];
-        [self.navigationController popViewControllerAnimated:NO];
-    }
     if (_changesMade == TRUE) {
         BOOL success = [_sources writeToFile:_sourcesplistFilePath atomically:YES];
         NSAssert(success, @"writeToFile failed");
@@ -78,10 +73,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *reuseIdentifier = @"reuseIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuseIdentifier"];
     }
     // Configure the cell...
     [[cell textLabel] setNumberOfLines:0];

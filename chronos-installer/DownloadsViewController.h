@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DownloadsViewController : UITableViewController
+@property (strong, nonatomic) NSArray * downloadedPackages;
 
 @end
 

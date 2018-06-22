@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DownloadViewController : UIViewController
 @property (strong, nonatomic) NSURL *downloadLink;
 @property (strong, nonatomic) NSString *bundleID;
+@property (strong, nonatomic) NSString *version;
 @property (strong, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (strong, nonatomic) IBOutlet UILabel *progressLabel;
 @end

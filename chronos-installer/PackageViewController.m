@@ -104,12 +104,28 @@
     }
 }
 - (IBAction)downloadButton:(id)sender {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *debsDirectory = [documentsDirectory stringByAppendingPathComponent:@"downloads"];
+    BOOL isDirectory;
+    NSString *packageInfoDirectory = [debsDirectory stringByAppendingPathComponent:@"packageInfo"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:packageInfoDirectory isDirectory:&isDirectory]) {
+        if (isDirectory) {}
+        else {
+            [[NSFileManager defaultManager] removeItemAtPath:packageInfoDirectory error:nil];
+            [[NSFileManager defaultManager] createDirectoryAtPath:packageInfoDirectory withIntermediateDirectories:TRUE attributes:nil error:nil];
+        }
+    } else {
+        [[NSFileManager defaultManager] createDirectoryAtPath:packageInfoDirectory withIntermediateDirectories:TRUE attributes:nil error:nil];
+    }
     if (_isCompatible == TRUE) {
+        [selectedPackage writeToFile:[packageInfoDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%@-info.plist", _packageBundleID, _packageVersion]] atomically:TRUE];
         [self performSegueWithIdentifier:@"goToDownloadViewController" sender:self];
     } else {
         UIAlertController *notCompatibleWarning = [UIAlertController alertControllerWithTitle:@"This package may not be compatible with your watchOS version" message:@"The developer of this package has not marked this package as compatible with your watchOS version. Installing this package may lead to system instability or may render your device inoperable." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancelDownloadAction = [UIAlertAction actionWithTitle:@"Cancel download" style:UIAlertActionStyleDefault handler:nil];
         UIAlertAction *downloadIncompatiblePackageAction = [UIAlertAction actionWithTitle:@"Download anyways" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [self->selectedPackage writeToFile:[packageInfoDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%@-info.plist", self->_packageBundleID, self->_packageVersion]] atomically:TRUE];
             [self performSegueWithIdentifier:@"goToDownloadViewController" sender:self];
         }];
         [notCompatibleWarning addAction:cancelDownloadAction];
@@ -123,6 +139,7 @@
         DownloadViewController *destViewController = [segue destinationViewController];
         destViewController.downloadLink = _packageDownloadLink;
         destViewController.bundleID = _packageBundleID;
+        destViewController.version = _packageVersion;
     }
 }
 
@@ -138,9 +155,13 @@
     } else {
         _isCompatible = [_packageWatchOSCompatibility containsObject:pairedWatchVersion];
         if (_isCompatible == TRUE) {
-            [[self watchOSCompatibilityLabel] setText:[NSString stringWithFormat:@"Compatible with your watchOS version (%@)", pairedWatchVersion]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[self watchOSCompatibilityLabel] setText:[NSString stringWithFormat:@"Compatible with your watchOS version (%@)", pairedWatchVersion]];
+            });
         } else {
-            [[self watchOSCompatibilityLabel] setText:@"Not compatible with your watchOS version"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[self watchOSCompatibilityLabel] setText:@"Not compatible with your watchOS version"];
+            });
             [[self watchOSCompatibilityLabel] setTextColor:[UIColor redColor]];
             [[self downloadButtonOutlet] setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         }

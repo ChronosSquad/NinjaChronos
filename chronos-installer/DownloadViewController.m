@@ -15,6 +15,7 @@
 @implementation DownloadViewController
 @synthesize downloadLink;
 @synthesize bundleID;
+@synthesize version;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,23 +28,14 @@
 - (void) URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *debsDirectory = [documentsDirectory stringByAppendingPathComponent:@"downloads"];
-    BOOL isDirectory;
-    if ([[NSFileManager defaultManager] fileExistsAtPath:debsDirectory isDirectory: &isDirectory]) {
-        if (isDirectory) {} else {
-            [[NSFileManager defaultManager] removeItemAtPath:debsDirectory error:nil];
-            [[NSFileManager defaultManager] createDirectoryAtPath:debsDirectory withIntermediateDirectories:FALSE attributes:nil error:nil];
-        }
-    } else {
-        [[NSFileManager defaultManager] createDirectoryAtPath:debsDirectory withIntermediateDirectories:FALSE attributes:nil error:nil];
-    }
-    NSError *error;
-    NSString *pathToDownload = [debsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.deb", bundleID]];
-    [[NSFileManager defaultManager] moveItemAtPath:[location path] toPath:pathToDownload error:&error];
+    NSString *downloadsDirectory = [documentsDirectory stringByAppendingPathComponent:@"downloads"];
+    NSString *debsDirectory = [downloadsDirectory stringByAppendingPathComponent:@"packages"];
+    NSString *pathToDownload = [debsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%@.deb", bundleID, version]];
+    [[NSFileManager defaultManager] moveItemAtPath:[location path] toPath:pathToDownload error:nil];
     [[self progressLabel] setText:@"Download complete!"];
     UIAlertController *finishedDownloadingAlert = [UIAlertController alertControllerWithTitle:@"Finished downloading package" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *goToHomePageViewControllerAction = [UIAlertAction actionWithTitle:@"Back to home page" style:UIAlertActionStyleCancel handler:^ (UIAlertAction * _Nonnull action) {
-        [self performSegueWithIdentifier:@"goToHomePageViewController" sender:self];
+        [self.navigationController popToRootViewControllerAnimated:TRUE];
     }];
     UIAlertAction *goToDownloadsViewControllerAction = [UIAlertAction actionWithTitle:@"Manage downloads" style:UIAlertActionStyleDefault handler:nil];
     UIAlertAction *deleteDownloadAction = [UIAlertAction actionWithTitle:@"Delete this package" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action){
