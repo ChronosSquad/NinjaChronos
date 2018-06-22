@@ -46,15 +46,29 @@
     return cell;
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *selectedPackage = [[[_downloadedPackages objectAtIndex:indexPath.row] absoluteString] stringByReplacingOccurrencesOfString:@"file://" withString:@""];
+    NSDictionary *selectedPackageInformation = [[NSDictionary alloc] initWithContentsOfFile:selectedPackage];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *pathToDebsFolder = [[documentsDirectory stringByAppendingPathComponent:@"downloads"] stringByAppendingPathComponent:@"packages"];
+    NSString *packageFileName = [NSString stringWithFormat:@"%@-%@.deb", [selectedPackageInformation objectForKey:@"BundleID"], [selectedPackageInformation objectForKey:@"Version"]];
+    NSString *pathToPackage = [pathToDebsFolder stringByAppendingPathComponent:packageFileName];
+    NSString *packageName = [selectedPackageInformation objectForKey:@"Name"];
+    UIAlertController *packageSelectedPopUp = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"What would you like to do with package: %@?", packageName] message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *sendPackage = [UIAlertAction actionWithTitle:@"Send to watchOS" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // Send to watchOS here
+    }];
+    UIAlertAction *deletePackage = [UIAlertAction actionWithTitle:@"Delete this package" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [[NSFileManager defaultManager] removeItemAtPath:pathToPackage error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:selectedPackage error:nil];
+        [self->_downloadsTableView reloadData];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    [packageSelectedPopUp addAction:sendPackage];
+    [packageSelectedPopUp addAction:deletePackage];
+    [packageSelectedPopUp addAction:cancelAction];
+    [self presentViewController:packageSelectedPopUp animated:TRUE completion:nil];
 }
-*/
 
 @end

@@ -148,6 +148,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="downloadsTableView" destination="wxf-BU-g3O" id="x8W-Tg-SZr"/>
                         <segue destination="fo2-Sl-ZRz" kind="show" identifier="goToDownloadedPackageViewController" id="OKD-R2-edY"/>
                     </connections>
                 </tableViewController>

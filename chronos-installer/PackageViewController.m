@@ -118,14 +118,15 @@
     } else {
         [[NSFileManager defaultManager] createDirectoryAtPath:packageInfoDirectory withIntermediateDirectories:TRUE attributes:nil error:nil];
     }
+    _pathToInfoFile = [packageInfoDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%@-info.plist", _packageBundleID, _packageVersion]];
     if (_isCompatible == TRUE) {
-        [selectedPackage writeToFile:[packageInfoDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%@-info.plist", _packageBundleID, _packageVersion]] atomically:TRUE];
+        [selectedPackage writeToFile:_pathToInfoFile atomically:TRUE];
         [self performSegueWithIdentifier:@"goToDownloadViewController" sender:self];
     } else {
         UIAlertController *notCompatibleWarning = [UIAlertController alertControllerWithTitle:@"This package may not be compatible with your watchOS version" message:@"The developer of this package has not marked this package as compatible with your watchOS version. Installing this package may lead to system instability or may render your device inoperable." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancelDownloadAction = [UIAlertAction actionWithTitle:@"Cancel download" style:UIAlertActionStyleDefault handler:nil];
         UIAlertAction *downloadIncompatiblePackageAction = [UIAlertAction actionWithTitle:@"Download anyways" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            [self->selectedPackage writeToFile:[packageInfoDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%@-info.plist", self->_packageBundleID, self->_packageVersion]] atomically:TRUE];
+            [self->selectedPackage writeToFile:self->_pathToInfoFile atomically:TRUE];
             [self performSegueWithIdentifier:@"goToDownloadViewController" sender:self];
         }];
         [notCompatibleWarning addAction:cancelDownloadAction];
@@ -140,6 +141,7 @@
         destViewController.downloadLink = _packageDownloadLink;
         destViewController.bundleID = _packageBundleID;
         destViewController.version = _packageVersion;
+        destViewController.pathToInfoFile = _pathToInfoFile;
     }
 }
 

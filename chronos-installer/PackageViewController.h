@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *packageDescription;
 @property (strong, nonatomic) UIImage *packageIconImage;
 @property (nonatomic) BOOL isCompatible;
+@property (strong, nonatomic) NSString *pathToInfoFile;
 @end
 
 NS_ASSUME_NONNULL_END

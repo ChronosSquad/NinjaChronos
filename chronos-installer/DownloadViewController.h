@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *version;
 @property (strong, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (strong, nonatomic) IBOutlet UILabel *progressLabel;
+@property (strong, nonatomic) NSString *pathToInfoFile;
 @end
 
 NS_ASSUME_NONNULL_END

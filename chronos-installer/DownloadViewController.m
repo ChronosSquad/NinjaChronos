@@ -7,6 +7,7 @@
 //
 
 #import "DownloadViewController.h"
+#import "DownloadViewController.h"
 
 @interface DownloadViewController ()
 
@@ -16,6 +17,7 @@
 @synthesize downloadLink;
 @synthesize bundleID;
 @synthesize version;
+@synthesize pathToInfoFile;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,9 +39,13 @@
     UIAlertAction *goToHomePageViewControllerAction = [UIAlertAction actionWithTitle:@"Back to home page" style:UIAlertActionStyleCancel handler:^ (UIAlertAction * _Nonnull action) {
         [self.navigationController popToRootViewControllerAnimated:TRUE];
     }];
-    UIAlertAction *goToDownloadsViewControllerAction = [UIAlertAction actionWithTitle:@"Manage downloads" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *goToDownloadsViewControllerAction = [UIAlertAction actionWithTitle:@"Send to watchOS" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // send to watchOS here
+    }];
     UIAlertAction *deleteDownloadAction = [UIAlertAction actionWithTitle:@"Delete this package" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action){
         [[NSFileManager defaultManager] removeItemAtPath:pathToDownload error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:self->pathToInfoFile error:nil];
+        [self.navigationController popViewControllerAnimated:TRUE];
     }];
     [finishedDownloadingAlert addAction:goToHomePageViewControllerAction];
     [finishedDownloadingAlert addAction:goToDownloadsViewControllerAction];
