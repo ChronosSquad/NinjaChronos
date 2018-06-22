@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:TRUE animated:FALSE];
     // Do any additional setup after loading the view, typically from a nib.
     self.refreshProgressBar.progress = 0;
     [_refreshProgressBar setHidden:TRUE];
@@ -42,6 +41,9 @@
     [self refreshSources];
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:TRUE animated:FALSE];
+}
 
 - (IBAction)infoButton:(id)sender {
     UIAlertController *teamInfo = [UIAlertController alertControllerWithTitle:@"Chronos Installer" message:@"Created by Samg_is_a_Ninja \n \n Special thanks to PsychoTea for creating overcl0ck, the first watchOS jailbreak" preferredStyle:UIAlertControllerStyleAlert];
